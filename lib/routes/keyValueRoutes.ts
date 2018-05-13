@@ -1,24 +1,19 @@
 import { Request, Response } from "express";
+import { KeyValueController } from '../controllers/keyValueController';
 
 export class Routes {
 
-    public routes(app): void {
+    public keyValueController: KeyValueController = new KeyValueController()
 
+    public routes(app): void {
         // object 
         app.route('/object')
-        // POST endpoint
-        .post((req: Request, res: Response) => { 
-            res.status(200).send({
-                message: 'POST request successfull'
-            })
-        })
+            // POST endpoint
+            .post(this.keyValueController.addNewKeyValue);
 
+        // Contact detail
         app.route('/object/:key')
-        // GET endpoint 
-        .get((req: Request, res: Response) => {
-            res.status(200).send({
-                message: 'GET request successfull'
-            })
-        })
+            // get specific object
+            .get(this.keyValueController.getValueByKey)
     }
 }
