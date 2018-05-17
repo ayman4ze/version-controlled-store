@@ -6,6 +6,9 @@ export class Routes {
     public keyValueController: KeyValueController = new KeyValueController()
 
     public routes(app): void {
+        app.route('/')
+            .get(this.keyValueController.testApp)
+
         // object 
         app.route('/object')
             // POST endpoint

@@ -7,6 +7,10 @@ const Key = mongoose.model('Key', KeySchema);
 const Value = mongoose.model('Value', ValueSchema);
 
 export class KeyValueController {
+    
+    public testApp(req: Request, res: Response) {
+        res.send({"message":"GET request successfull"});
+    }
 
     public async addNewKeyValue(req: Request, res: Response) {
 
